@@ -1,0 +1,23 @@
+version: "3.0.0"
+
+services:
+  etcd:
+    image: gcr.io/etcd-development/etcd:v3.4.24 
+    ports:
+      - 2379:2379
+    volumes:
+      - /tmp/etc-data.tmp:/etcd-data
+    environment:
+      - ETCD_NAME=s1
+      - ETCD_DATA_DIR=/etcd-data
+      - ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379 
+      - ETCD_ADVERTISE_CLIENT_URLS=http://0.0.0.0:2379 
+      - ETCD_LISTEN_PEER_URLS=http://0.0.0.0:2380 
+      - ETCD_INITIAL_ADVERTISE_PEER_URLS=http://0.0.0.0:2380 
+      - ETCD_INITIAL_CLUSTER=s1=http://0.0.0.0:2380 
+      - ETCD_INITIAL_CLUSTER_TOKEN=tkn 
+      - ETCD_INITIAL_CLUSTER_STATE=new 
+      - ETCD_LOG_LEVEL=info 
+      - ETCD_LOGGER=zap 
+      - ETCD_LOG_OUTPUTS=stderr
+
