@@ -3,7 +3,7 @@ package apis
 import (
 	"net/http"
 
-	zeus "github.com/dropdevrahul/zeus/src"
+	athena "github.com/dropdevrahul/athena/athena"
 )
 
 type PostResponse struct {
@@ -12,7 +12,7 @@ type PostResponse struct {
 }
 
 func GetPostHandler(w http.ResponseWriter, r *http.Request) {
-	zeus.Json(w, PostResponse{
+	athena.Json(w, PostResponse{
 		ID:   "12",
 		Text: "this is a post",
 	}, http.StatusOK, nil)
