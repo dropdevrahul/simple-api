@@ -1,9 +1,9 @@
 package main
 
 import (
-	apiserver "github.com/dropdevrahul/simple-http-server/apiserver/src"
-	apis "github.com/dropdevrahul/simple-http-server/apiserver/src/apis/handlers"
-	"github.com/dropdevrahul/simple-http-server/apiserver/src/middlewares"
+	apiserver "github.com/dropdevrahul/simple-http-server/apiserver/internal"
+	apis "github.com/dropdevrahul/simple-http-server/apiserver/internal/apis/handlers"
+	"github.com/dropdevrahul/simple-http-server/apiserver/internal/middlewares"
 	"github.com/go-chi/chi"
 )
 
@@ -20,7 +20,16 @@ func main() {
 
 	apis.AddRoutes(router)
 
-	_ = server.LoadDB()
+	err := server.LoadSettings(".")
+	if err != nil {
+		panic(err)
+	}
+
+	err = server.LoadDB()
+
+	if err != nil {
+		panic(err)
+	}
 
 	server.Serve(router)
 }
