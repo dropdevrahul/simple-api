@@ -1,9 +1,9 @@
 package main
 
 import (
-	apiserver "github.com/dropdevrahul/simple-http-server/apiserver/internal"
-	apis "github.com/dropdevrahul/simple-http-server/apiserver/internal/apis/handlers"
-	"github.com/dropdevrahul/simple-http-server/apiserver/internal/middlewares"
+	apiserver "github.com/dropdevrahul/simple-api/internal"
+	apis "github.com/dropdevrahul/simple-api/internal/apis/handlers"
+	"github.com/dropdevrahul/simple-api/internal/middlewares"
 	"github.com/go-chi/chi"
 )
 

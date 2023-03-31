@@ -1,7 +1,7 @@
 package userrepo
 
 import (
-	"github.com/dropdevrahul/simple-http-server/apiserver/internal/apiserver"
+	"github.com/dropdevrahul/simple-api/internal/apiserver"
 )
 
 type User struct {

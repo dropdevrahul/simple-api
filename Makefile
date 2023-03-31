@@ -1,6 +1,12 @@
 BINARY=app
 
-migrate:
+test:
+	go test `go list | grep -v dev-env`
+
+vet:
+	go vet `go list | grep -v dev-env`
+
+migrate-db:
 	cd migrations && goose postgres "user=${APP_DB_USER} password=${APP_DB_PASSWORD} host=${APP_DB_HOST}\
 	 		port=${APP_DB_PORT}	dbname=postgres sslmode=disable" up
 

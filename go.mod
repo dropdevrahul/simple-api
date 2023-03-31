@@ -1,4 +1,4 @@
-module github.com/dropdevrahul/simple-http-server/apiserver
+module github.com/dropdevrahul/simple-api
 
 go 1.18
 
