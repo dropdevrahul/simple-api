@@ -1,11 +1,13 @@
 package apis
 
 import (
+	"github.com/dropdevrahul/simple-api/internal/application"
 	"github.com/go-chi/chi"
 )
 
 func AddRoutes(
+	a *application.App,
 	r *chi.Mux,
 ) {
-	r.Get("/post/{id}", GetPostHandler)
+	r.Post("/user", a.UserSignUpHandler)
 }

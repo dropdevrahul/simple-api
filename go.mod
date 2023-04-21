@@ -6,7 +6,9 @@ require (
 	github.com/dropdevrahul/athena v0.0.3
 	github.com/go-chi/chi v1.5.4
 	github.com/jmoiron/sqlx v1.3.5
+	github.com/lib/pq v1.10.7
 	github.com/spf13/viper v1.3.2
+	golang.org/x/crypto v0.0.0-20181203042331-505ab145d0a9
 )
 
 require (
@@ -14,7 +16,6 @@ require (
 	github.com/fsnotify/fsnotify v1.4.7 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/kr/pretty v0.2.0 // indirect
-	github.com/lib/pq v1.10.7 // indirect
 	github.com/magiconair/properties v1.8.0 // indirect
 	github.com/mitchellh/mapstructure v1.1.2 // indirect
 	github.com/pelletier/go-toml v1.2.0 // indirect

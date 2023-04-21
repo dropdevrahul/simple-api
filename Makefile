@@ -1,10 +1,10 @@
 BINARY=app
 
 test:
-	go test `go list | grep -v dev-env`
+	go test
 
 vet:
-	go vet `go list | grep -v dev-env`
+	go vet
 
 migrate-db:
 	cd migrations && goose postgres "user=${APP_DB_USER} password=${APP_DB_PASSWORD} host=${APP_DB_HOST}\
