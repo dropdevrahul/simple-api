@@ -1,14 +1,14 @@
 -- +goose Up
 -- +goose StatementBegin
-CREATE TABLE users(
+SELECT 'up SQL query';
+CREATE TABLE user_tokens(
   id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-  email varchar(100) not null unique,
-  password varchar(128) not null,  
-  name varchar(64) not null
+  token varchar(100) not null unique,
+  user_id uuid REFERENCES users
 );
 -- +goose StatementEnd
 
 -- +goose Down
 -- +goose StatementBegin
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS user_tokens;
 -- +goose StatementEnd

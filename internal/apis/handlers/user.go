@@ -2,24 +2,41 @@ package apis
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 
 	athena "github.com/dropdevrahul/athena/athena"
-	"github.com/dropdevrahul/simple-api/internal/application"
+	"github.com/dropdevrahul/simple-api/internal/app"
 	"github.com/dropdevrahul/simple-api/internal/models"
 )
 
-type PostResponse struct {
-	ID   string `json:"id"`
-	Text string `json:"text"`
-}
 
-func (a *application.App) UserSignUpHandler(w http.ResponseWriter, r *http.Request) {
+func UserSignUpHandler(a *app.App, w http.ResponseWriter, r *http.Request) {
 	var u models.User
-	err := json.NewDecoder(r.Body).Decode(&u)
 
-	athena.Json(w, PostResponse{
-		ID:   "12",
-		Text: "this is a post",
-	}, http.StatusOK, nil)
+	err := json.NewDecoder(r.Body).Decode(&u)
+	if err != nil {
+		log.Println(err)
+		athena.Json(w, models.HTTPError{
+			Message: "Invalid Payload",
+			Errors: []models.ErrorDetail{
+				{Detail: err.Error()},
+			},
+		}, http.StatusBadRequest, nil)
+
+		return
+	}
+
+  ut, err := app.SignUpUser(a, &u)
+	if err != nil {
+		log.Println(err)
+		athena.Json(w, models.HTTPError{
+			Message: "Failed to save user",
+		}, http.StatusInternalServerError, nil)
+
+		return
+	}
+
+
+	athena.Json(w, ut, http.StatusOK, nil)
 }

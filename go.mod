@@ -5,6 +5,7 @@ go 1.18
 require (
 	github.com/dropdevrahul/athena v0.0.3
 	github.com/go-chi/chi v1.5.4
+	github.com/google/uuid v1.3.0
 	github.com/jmoiron/sqlx v1.3.5
 	github.com/lib/pq v1.10.7
 	github.com/spf13/viper v1.3.2
