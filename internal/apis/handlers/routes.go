@@ -14,4 +14,7 @@ func AddRoutes(
 	r.Post("/user", func(w http.ResponseWriter, r *http.Request) {
 		UserSignUpHandler(a, w, r)
 	})
+	r.Post("/auth", func(w http.ResponseWriter, r *http.Request) {
+		UserLoginHandler(a, w, r)
+	})
 }

@@ -8,7 +8,7 @@ type User struct {
 }
 
 type UserToken struct {
-	ID     string `db:"id"`
-	Token  string `db:"token"`
-	UserID string `db:"user_id"`
+	ID     string `db:"id" json:"-"`
+	Token  string `db:"token" json:"token"`
+	UserID string `db:"user_id" json:"user_id"`
 }
