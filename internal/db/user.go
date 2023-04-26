@@ -8,6 +8,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+//go:generate mockery --name UserRepo
 type UserRepo interface {
 	// create user
 	Create(d *models.DB, u *models.User) error
@@ -18,6 +19,8 @@ type UserRepo interface {
 }
 
 // UserTokenRepo interface for `user_tokens` table
+//
+//go:generate mockery --name UserTokenRepo
 type UserTokenRepo interface {
 	Create(d *models.DB, ut *models.UserToken) error
 	GetByUserID(d *models.DB, userID string, ut *models.UserToken) error
