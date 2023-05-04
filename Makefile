@@ -17,6 +17,12 @@ migrate-db-down:
 generate:
 	go generate ./...
 
+lint:
+	golangci-lint run
+
+vet:
+	go vet ./...
+
 migration:
 	# name is name of migration passed as argument
 	# make migration name=create_some_table
@@ -34,3 +40,7 @@ dev-db-up:
 
 dev-db-down:
 	cd dev-env && docker compose down
+
+# generates swagger document by scanning code for comments
+gen-swagger:
+	swag init

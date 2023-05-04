@@ -24,5 +24,5 @@ func DecodeRequest(w http.ResponseWriter,
 		return err
 	}
 
-  return nil
+	return nil
 }

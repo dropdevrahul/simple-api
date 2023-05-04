@@ -21,7 +21,7 @@ func SignUpUser(a *App, u *models.User) (
 	defer tx.Rollback()
 
 	_, err = GetUserByEmail(a, u.Email)
-	if err != nil && err != models.ErrNotFound{
+	if err != nil && err != models.ErrNotFound {
 		log.Print(err)
 		return token, err
 	}

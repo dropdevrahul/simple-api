@@ -26,8 +26,7 @@ type UserTokenRepo interface {
 	GetByUserID(d *models.DB, userID string, ut *models.UserToken) error
 }
 
-// UserPD postgres implementation for UserRepo
-
+// UserPG postgres implementation for UserRepo
 type UserPG struct {
 	TableName string
 }

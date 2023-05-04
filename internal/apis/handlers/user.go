@@ -10,10 +10,21 @@ import (
 )
 
 type LoginRequest struct {
-	Email    string `json:email`
-	Password string `json:password`
+	Email    string `json:"email"`
+	Password string `json:"password"`
 }
 
+// SignupUser
+//
+//		@Summary      Signup
+//		@Description  Lets a new user register to get a new token
+//		@Tags         user
+//		@Accept       json
+//		@Produce      json
+//		@Success      200  {object}  models.UserToken
+//		@Failure      400  {object}  models.HTTPError
+//		@Failure      500  {object}  models.HTTPError
+//	 @Router       /user [post]
 func UserSignUpHandler(a *app.App, w http.ResponseWriter, r *http.Request) {
 	var u models.User
 
