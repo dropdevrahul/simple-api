@@ -1,4 +1,11 @@
 definitions:
+  apis.LoginRequest:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
   models.ErrorDetail:
     properties:
       detail:
@@ -13,6 +20,16 @@ definitions:
       message:
         type: string
     type: object
+  models.User:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        description: salted hashed password using bcrypt
+        type: string
+    type: object
   models.UserToken:
     properties:
       token:
@@ -23,11 +40,48 @@ definitions:
 info:
   contact: {}
 paths:
+  /auth:
+    post:
+      consumes:
+      - application/json
+      description: Lets a user request a tokin
+      parameters:
+      - description: comment
+        in: body
+        name: User
+        required: true
+        schema:
+          $ref: '#/definitions/apis.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UserToken'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.HTTPError'
+      summary: Login
+      tags:
+      - user
   /user:
     post:
       consumes:
       - application/json
       description: Lets a new user register to get a new token
+      parameters:
+      - description: comment
+        in: body
+        name: User
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
       produces:
       - application/json
       responses:

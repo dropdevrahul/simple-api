@@ -19,6 +19,7 @@ type LoginRequest struct {
 //		@Summary      Signup
 //		@Description  Lets a new user register to get a new token
 //		@Tags         user
+//    @Param        User body models.User true "comment"
 //		@Accept       json
 //		@Produce      json
 //		@Success      200  {object}  models.UserToken
@@ -47,6 +48,18 @@ func UserSignUpHandler(a *app.App, w http.ResponseWriter, r *http.Request) {
 	athena.Json(w, ut, http.StatusOK, nil)
 }
 
+// LoginUser
+//
+//		@Summary      Login
+//		@Description  Lets a user request a tokin
+//		@Tags         user
+//		@Accept       json
+//		@Produce      json
+//    @Param        User body LoginRequest true "comment"
+//		@Success      200  {object}  models.UserToken
+//		@Failure      400  {object}  models.HTTPError
+//		@Failure      500  {object}  models.HTTPError
+//	 @Router       /auth [post]
 func UserLoginHandler(a *app.App, w http.ResponseWriter, r *http.Request) {
 	var req LoginRequest
 

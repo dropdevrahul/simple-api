@@ -1,3 +1,5 @@
+.PHONY: run dev-db-up
+
 BINARY=app
 
 test:
@@ -34,6 +36,10 @@ build:
 run:
 	go run main.go
 
+# generates swagger document by scanning code for comments
+swagger-doc:
+	swag init
+
 # development
 dev-db-up:
 	cd dev-env && docker compose up -d
@@ -41,6 +47,5 @@ dev-db-up:
 dev-db-down:
 	cd dev-env && docker compose down
 
-# generates swagger document by scanning code for comments
-gen-swagger:
-	swag init
+run-dev: dev-db-up run
+
